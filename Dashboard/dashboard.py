@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import streamlit as st
 from babel.numbers import format_currency
-sns.set(style='white')
+sns.set(style='dark')
 
 day_df = pd.read_csv("Dashboard/day.csv")
 
