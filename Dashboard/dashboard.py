@@ -14,36 +14,7 @@ def convert_to_datetime(df):
     df['yr'] = df['dteday'].dt.year
     df['mnth'] = df['dteday'].dt.month
 
-     # Mapping angka musim ke nama musim
-    season_mapping = {
-        1: 'Winter',
-        2: 'Spring',
-        3: 'Summer',
-        4: 'Fall'
-    }
-    df['season_name'] = df['season'].map(season_mapping)
-
-    # Menambahkan kolom hari dalam minggu
-    df['weekday_name'] = df['weekday'].dt.day_name()
-
-    # Konversi kolom cuaca menjadi kategori untuk efisiensi
-    weather_mapping = {
-        1: 'Clear or Partly Cloudy',
-        2: 'Mist or Cloudy',
-        3: 'Light Snow or Rain',
-        4: 'Heavy Rain or Snow'
-    }
-    df['weather_name'] = df['weathersit'].map(weather_mapping)
-
-    # Menambahkan kolom untuk indikasi musim panas atau libur
-    df['is_summer'] = df['season'] == 3
-    df['is_holiday'] = df['holiday'] == 1
-
-    # Menambahkan kolom gabungan untuk analisis per musim
-    df['season_month'] = df['season_name'] + " (" + df['mnth'].astype(str) + ")"
-
-    return df
-
+   
 
 # Konversi kolom datetime dan pengurutan data
 datetime_columns = ["dteday"]
