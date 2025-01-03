@@ -4,7 +4,7 @@ import seaborn as sns
 import streamlit as st
 from babel.numbers import format_currency
 
-day_df = pd.read_csv("/workspaces/submission/Dashboard/day.csv")
+day_df = pd.read_csv("Dashboard/day.csv")
 
 def convert_to_datetime(df):
     # Konversi kolom 'dteday' ke format datetime
