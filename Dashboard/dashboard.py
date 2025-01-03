@@ -35,38 +35,36 @@ main_df = day_df[(day_df["dteday"] >= str(start_date)) & (day_df["dteday"] <= st
 
 st.header('Sewa Sepeda :sparkles:')
 
-pivot_table_mnth = main_df.groupby(by="mnth").agg({
+chart_bulan = main_df.groupby(by="mnth").agg({
     "instant": "nunique",
     "cnt": ["mean"]
 })
 
-mean_cnt = pivot_table_mnth[('cnt', 'mean')]
+mean_cnt = chart_bulan[('cnt', 'mean')]
 
 plt.figure(figsize=(10, 6))
 sns.barplot(x=mean_cnt.index, y=mean_cnt.values, palette="viridis")
 plt.title("Rata-Rata Jumlah Terbanyak Penyewa per Bulan", fontsize=16)
-plt.xlabel("Month", fontsize=14)
+plt.xlabel("Bulan", fontsize=14)
 plt.ylabel("Rata-rata", fontsize=14)
 plt.xticks(ticks=range(len(mean_cnt.index)), labels=mean_cnt.index)
 plt.grid(axis="y", linestyle="--", alpha=0.7)
 plt.tight_layout()
 st.pyplot(plt)
 
-pivot_table_yr = main_df.groupby(by="yr").agg({
+chart_tahun = main_df.groupby(by="yr").agg({
+    "instant": "nunique",
     "cnt": ["mean"]
-}).reset_index()
+})
 
-pivot_table_yr.columns = ["yr", "cnt_mean"]
+mean_cnt = chart_tahun[('cnt', 'mean')]
 
-plt.figure(figsize=(8, 5))
-plt.bar(pivot_table_yr["yr"], pivot_table_yr["cnt_mean"], color="Blue", width=0.5, label="Mean CNT")
-
-labels = [f"Year {int(year)}" for year in pivot_table_yr["yr"]]
-
-plt.title("Rata-Rata Jumlah Penyewa per Tahun", fontsize=16)
+plt.figure(figsize=(10, 6))
+sns.barplot(x=mean_cnt.index, y=mean_cnt.values, palette="viridis")
+plt.title("Rata-Rata Jumlah Terbanyak Penyewa per tahun", fontsize=16)
 plt.xlabel("Tahun", fontsize=14)
-plt.ylabel("Rata-rata Penyewa", fontsize=14)
-plt.xticks(ticks=pivot_table_yr["yr"], labels=labels) 
+plt.ylabel("Rata-rata", fontsize=14)
+plt.xticks(ticks=range(len(mean_cnt.index)), labels=mean_cnt.index)
 plt.grid(axis="y", linestyle="--", alpha=0.7)
 plt.tight_layout()
 st.pyplot(plt)
