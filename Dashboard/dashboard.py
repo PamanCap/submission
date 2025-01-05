@@ -60,6 +60,9 @@ chart_tahun = main_df.groupby(by="yr").agg({
 
 mean_cnt = chart_tahun[('cnt', 'mean')]
 
+year_labels = {0: "Tahun 1", 1: "Tahun 2"}
+mean_cnt.index = mean_cnt.index.map(year_labels)
+
 plt.figure(figsize=(10, 6))
 sns.barplot(x=mean_cnt.index, y=mean_cnt.values, palette="viridis")
 plt.title("Rata-Rata Jumlah Terbanyak Penyewa per tahun", fontsize=16)
