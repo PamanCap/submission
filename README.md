@@ -1,12 +1,11 @@
-# submission
-explains the exploration and visualization of the bike sharing dataset
+# Sewa Sepeda Dashboard ✨
 
 # Setup Environment - Shell/Terminal
+mkdir proyek_analisis
+cd proyek_analisis
+pipenv install
+pipenv shell
 pip install -r requirements.txt
 
 # Run Streamlit App
-python -m streamlit run dashboard/dashboard.py
-
-or
-
-python -m streamlit run dashboard.py
+streamlit run dashboard.py
