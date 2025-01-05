@@ -1,5 +1,5 @@
 # submission
-explains the exploration and visualization of the daily bike rental dataset
+explains the exploration and visualization of the bike sharing dataset
 
 # Setup Environment - Shell/Terminal
 pip install -r requirements.txt
